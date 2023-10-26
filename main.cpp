@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     inter f(&w,{0,0,1930,990},"background : qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:2, stop:0.2 #6ac963 , stop:0.5 #4aa66a, stop:0.7 #0e7285);border-radius:60px;","");
     inter f2(&w,{160,50,1700,900},"background-color:white;border-radius:40px","");
-    inter f_crud(&w,{300,200,1500,700},"background-color:white;border-radius:40px",":/new/titre/image/titre/gestion de cours/Liste des courses.png");
+    inter f_crud(&w,{300,200,1500,700},"background-color:white;border-radius:40px",":/new/titre/image/titre/gestion de conducteurs/Liste des conducteurs.png");
     btn_crud btn[5];
     for(int i=0;i<5;i++)
     {
