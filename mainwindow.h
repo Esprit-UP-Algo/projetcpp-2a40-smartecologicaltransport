@@ -33,8 +33,42 @@ private slots:
 
     void on_pushButton_23_clicked();
 
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_21_clicked();
+
+    void on_pushButton_24_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_26_clicked();
+
+    void on_pushButton_29_clicked();
+
+    void on_pushButton_31_clicked();
+
+    void on_pushButton_28_clicked();
+
+    void on_pushButton_30_clicked();
+
+    void on_pushButton_12_clicked();
+
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_27_clicked();
+
 private:
     Ui::MainWindow *ui;
-    taxi T1;
+    taxi T1,T2;
 };
 #endif // MAINWINDOW_H
