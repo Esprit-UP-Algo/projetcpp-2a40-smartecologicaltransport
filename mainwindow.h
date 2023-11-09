@@ -6,6 +6,17 @@
 #include<QBarSeries>
 #include <QMainWindow>
 #include <taxi.h>
+#include<QFile>
+#include<QDir>
+#include<QDebug>
+#include<QTextStream>
+#include <QApplication>
+#include <QPainter>
+#include <QTextDocument>
+#include<QGraphicsDropShadowEffect>
+#include<QPropertyAnimation>
+#include<QRect>
+#include <QIntValidator>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -67,8 +78,31 @@ private slots:
 
     void on_pushButton_27_clicked();
 
+    void on_pushButton_37_clicked();
+
+    void on_pushButton_36_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_buttonBox_accepted();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_DDD_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_70_clicked();
+
 private:
     Ui::MainWindow *ui;
     taxi T1,T2;
+        QPropertyAnimation *ESS;
 };
 #endif // MAINWINDOW_H
