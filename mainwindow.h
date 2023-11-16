@@ -17,6 +17,8 @@
 #include<QPropertyAnimation>
 #include<QRect>
 #include <QIntValidator>
+#include <QFile>
+#include <QTextStream>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -99,6 +101,8 @@ private slots:
     void on_pushButton_6_clicked();
 
     void on_pushButton_70_clicked();
+
+    void on_pushButton_38_clicked();
 
 private:
     Ui::MainWindow *ui;

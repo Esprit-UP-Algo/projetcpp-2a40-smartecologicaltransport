@@ -4,6 +4,14 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QLineEdit>
+#include <QKeyEvent>
+#include<QLabel>
+#include <QApplication>
+#include <QLabel>
+#include <QTimer>
+#include <QPainter>
+#include <QPdfWriter>
 class taxi
 {
 private:
@@ -44,11 +52,30 @@ public:
         QSqlQueryModel *afficher();
         QSqlQueryModel *pluscinquante();
         QSqlQueryModel *Recherher(QString);
+        int Recherher2(QString);
         int GTNOT();
         int GTL();
         int GTO();
+        QString recupererMarque(QString );
+        QString recupererModele(QString );
+        QString recupererCarburant(QString );
+        int  recupererNBRPL(QString);
+        QString recupererBoiteV(QString );
+        QString recupererStatut(QString );
+        QString recupererNUMCH(QString );
+        QString recupererTYEPCO(QString);
+        int recupererETATCH(QString );
+        QString recupererAUTON(QString immatricule);
+        void showLabelFor5Seconds(QLabel *label);
+        QSqlQueryModel *afficherHISTO();
+        void ANIMAT();
+        int Recherher3(QString immatricule);
+        QSqlQueryModel *Recherher0(QString immatricule );
         bool update(QString,QString,QString,QString,int,QString,QString,QString,QString,int,QString);
-
+        void generatePdf(const QString &fileName);
+        void ecrireDansFichier(const QString& immatriculation, const QString& tempsSuppression);
+        void ecrireDansFichier1(const QString& immatriculation, const QString& tempsAjout);
+        void ecrireDansFichier2(const QString& immatriculation, const QString& tempsDeMiseAjour);
 };
 
 #endif // TAXI_H

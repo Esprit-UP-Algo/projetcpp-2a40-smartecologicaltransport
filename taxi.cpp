@@ -16,6 +16,8 @@
 #include <QFileDialog>
 #include <QtWidgets>
 #include <QPdfWriter>
+#include <QFile>
+#include <QTextStream>
 taxi :: taxi(QString immatricule ,QString marque ,QString modele ,QString carburant ,int NBRPL ,QString BoiteV ,QString Statut ,QString NumCH,QString TypeCO,int EtatCH ,QString Auton)
 {
     this->immatricule=immatricule;
@@ -332,6 +334,45 @@ void taxi :: generatePdf(const QString &fileName)
     painter.drawText(0, 2800, "Nombre de taxis occupés : " + myText);
     painter.drawText(0, 3200, "Nombre de taxis libres : " + myText1);
     painter.end();
+}
+void taxi ::ecrireDansFichier(const QString& immatriculation, const QString& tempsSuppression)
+{
+    QString nomFichier = "C:/Users/asus/OneDrive/Bureau/QT/build-final-Desktop_Qt_5_9_9_MinGW_32bit-Debug/HISTORIQUE.txt";
+    QFile file(nomFichier);
+
+    if (file.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream stream(&file);
+        stream <<"SUPPRESSION:"<< "Immatriculation : " << immatriculation << ", Temps de suppression : " << tempsSuppression << "\n";
+        file.close();
+    } else {
+        // Gérer les erreurs d'ouverture de fichier
+    }
+}
+void taxi ::ecrireDansFichier1(const QString& immatriculation, const QString& tempsAjout)
+{
+    QString nomFichier = "C:/Users/asus/OneDrive/Bureau/QT/build-final-Desktop_Qt_5_9_9_MinGW_32bit-Debug/HISTORIQUE.txt";
+    QFile file(nomFichier);
+
+    if (file.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream stream(&file);
+        stream <<"AJOUT :"<< "Immatriculation : " << immatriculation << ", Temps de l'ajout : " << tempsAjout << "\n";
+        file.close();
+    } else {
+        // Gérer les erreurs d'ouverture de fichier
+    }
+}
+void taxi ::ecrireDansFichier2(const QString& immatriculation, const QString& tempsDeMiseAjour)
+{
+    QString nomFichier = "C:/Users/asus/OneDrive/Bureau/QT/build-final-Desktop_Qt_5_9_9_MinGW_32bit-Debug/HISTORIQUE.txt";
+    QFile file(nomFichier);
+
+    if (file.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream stream(&file);
+        stream <<"MISE A JOUR  :"<< "Immatriculation : " << immatriculation << ", Temps de l'ajout : " << tempsDeMiseAjour << "\n";
+        file.close();
+    } else {
+        // Gérer les erreurs d'ouverture de fichier
+    }
 }
 taxi::taxi()
 {
