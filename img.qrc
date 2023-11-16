@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>image/Liste des courses.png</file>
+        <file>image/crayon (1).png</file>
+        <file>image/crayon.png</file>
+        <file>image/supprimer-le-symbole (2).png</file>
+        <file>image/supprimer-le-symbole.png</file>
+        <file>image/slim/coins ns.png</file>
+        <file>image/slim/coins s.png</file>
+        <file>image/slim/home ns.png</file>
+        <file>image/slim/home s.png</file>
+        <file>image/slim/log out ns.png</file>
+        <file>image/slim/log out s.png</file>
+        <file>image/slim/managment ns.png</file>
+        <file>image/slim/managment s.png</file>
+        <file>image/slim/map ns.png</file>
+        <file>image/slim/map s.png</file>
+        <file>image/slim/support ns.png</file>
+        <file>image/slim/support s.png</file>
+    </qresource>
+</RCC>
