@@ -14,7 +14,7 @@ edite::edite(QLabel *l,QRect pos)
     ed->setStyleSheet("background-color:transparent;border:none;");
     lab->resize(pos.width(),3);
     lab->move(0,pos.height()-3);
-    lab->setStyleSheet("background-color:red;");
+    //lab->setStyleSheet("background-color:red;");
     ed->setFont(font);
    // ed->setTextMargins(55,0,0,0);
 }

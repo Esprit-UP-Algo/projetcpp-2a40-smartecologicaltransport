@@ -1,14 +1,11 @@
 #ifndef LINEEDITE_H
 #define LINEEDITE_H
-
-
-#include"mainwindow.h"
+#include<QLineEdit>
+#include<QLabel>
 class edite
 {
 public:
     QLineEdit *ed;
-
-
     QLabel *lab;
     edite();
     edite (QLabel *l,QRect pos);

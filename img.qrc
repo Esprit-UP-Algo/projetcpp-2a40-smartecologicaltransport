@@ -1,21 +1,47 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>image/Liste des courses.png</file>
-        <file>image/crayon (1).png</file>
-        <file>image/crayon.png</file>
-        <file>image/supprimer-le-symbole (2).png</file>
-        <file>image/supprimer-le-symbole.png</file>
-        <file>image/slim/coins ns.png</file>
-        <file>image/slim/coins s.png</file>
-        <file>image/slim/home ns.png</file>
-        <file>image/slim/home s.png</file>
-        <file>image/slim/log out ns.png</file>
-        <file>image/slim/log out s.png</file>
-        <file>image/slim/managment ns.png</file>
-        <file>image/slim/managment s.png</file>
-        <file>image/slim/map ns.png</file>
-        <file>image/slim/map s.png</file>
-        <file>image/slim/support ns.png</file>
-        <file>image/slim/support s.png</file>
+        <file>image/login/acc.png</file>
+        <file>image/login/bacck.png</file>
+        <file>image/login/eye.png</file>
+        <file>image/login/forgot pass.png</file>
+        <file>image/login/lock.png</file>
+        <file>image/login/login.png</file>
+        <file>image/login/password.png</file>
+        <file>image/login/sign up.png</file>
+        <file>image/login/username.png</file>
+        <file>image/login/backbidha.png</file>
+        <file>image/interface/background.png</file>
+        <file>image/interface/home_NS.png</file>
+        <file>image/interface/home_S.png</file>
+        <file>image/interface/managment_NS.png</file>
+        <file>image/interface/managment_S.png</file>
+        <file>image/interface/log_out.png</file>
+        <file>image/interface/flotte_taxi.png</file>
+        <file>image/interface/gestion_client.png</file>
+        <file>image/interface/gestion_conducteur.png</file>
+        <file>image/interface/gestion_course.png</file>
+        <file>image/interface/gestion_recharge.png</file>
+        <file>image/interface/logo.png</file>
+        <file>image/interface/client.png</file>
+        <file>image/interface/conducture.png</file>
+        <file>image/interface/cours.png</file>
+        <file>image/interface/energie.png</file>
+        <file>image/interface/voiture2.png</file>
+        <file>image/ges_course/info.png</file>
+        <file>image/ges_course/liste_course.png</file>
+        <file>image/ges_course/liste_facture.png</file>
+        <file>image/ges_course/state.png</file>
+        <file>image/ges_course/recherche.png</file>
+        <file>image/ges_course/filtrer.png</file>
+        <file>image/tab_ges_course/385541660_555250976809252_8580406311245941901_n.png</file>
+        <file>image/tab_ges_course/387331704_727537248734924_2224032755354308251_n.png</file>
+        <file>image/tab_ges_course/387332704_1343940753154891_2029766032942571898_n.png</file>
+        <file>image/tab_ges_course/387333297_1779468429146928_8689424470225080288_n.png</file>
+        <file>image/tab_ges_course/393114558_880180833545879_7951550619624183475_n.png</file>
+        <file>image/tab_ges_course/creer.png</file>
+        <file>image/tab_ges_course/interface.png</file>
+        <file>image/tab_ges_course/modifier.png</file>
+        <file>image/tab_ges_course/nonvalide.png</file>
+        <file>image/tab_ges_course/valide.png</file>
     </qresource>
 </RCC>
