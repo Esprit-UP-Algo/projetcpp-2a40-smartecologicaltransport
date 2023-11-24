@@ -2,8 +2,12 @@
 #define STATIONS_H
 #include <QSqlQuery>
 #include<QSqlQueryModel>
+#include <QSqlTableModel>
 #include <QString>
+
+#include "editablesqlquerymodel.h"
 class Stations
+
 {
     QString ref;
     QString statut;
@@ -12,9 +16,11 @@ class Stations
     QString rue;
     QString ville;
     QString code_postal;
+    double longitude;
+    double latitude;
     public:
         Stations();
-        Stations(QString,QString,int,QString,QString,QString,QString);
+        Stations(QString,QString,int,QString,QString,QString,QString,double,double);
 
         QString get_ref();
         QString get_statut();
@@ -33,9 +39,9 @@ class Stations
         void set_code_postal(QString);
 
         bool ajouter();
-        QSqlQueryModel* afficher();
+        EditableSqlQueryModel* afficher(const QList<int> &editableColumns,int,QString);
         bool supprimer(QString);
-        bool update();
+        bool update(int colonne,QString ref,QVariant nv);
 
 };
 
