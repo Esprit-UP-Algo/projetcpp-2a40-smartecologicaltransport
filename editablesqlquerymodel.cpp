@@ -1,0 +1,7 @@
+
+#include "editablesqlquerymodel.h"
+
+
+
+
+

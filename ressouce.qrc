@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>slim/slim/coins ns.png</file>
+        <file>slim/slim/coins s.png</file>
+        <file>slim/slim/edit0.png</file>
+        <file>slim/slim/edit1.png</file>
+        <file>slim/slim/home ns.png</file>
+        <file>slim/slim/home s.png</file>
+        <file>slim/slim/log out ns.png</file>
+        <file>slim/slim/log out s.png</file>
+        <file>slim/slim/managment ns.png</file>
+        <file>slim/slim/managment s.png</file>
+        <file>slim/slim/map ns.png</file>
+        <file>slim/slim/map s.png</file>
+        <file>slim/slim/marker.png</file>
+        <file>slim/slim/recherche.png</file>
+        <file>slim/slim/supp0.png</file>
+        <file>slim/slim/supp1.png</file>
+        <file>slim/slim/support ns.png</file>
+        <file>slim/slim/support s.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>map.qml</file>
+    </qresource>
+</RCC>
