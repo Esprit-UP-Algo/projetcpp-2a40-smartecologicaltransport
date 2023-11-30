@@ -76,6 +76,7 @@ public:
         void ecrireDansFichier(const QString& immatriculation, const QString& tempsSuppression);
         void ecrireDansFichier1(const QString& immatriculation, const QString& tempsAjout);
         void ecrireDansFichier2(const QString& immatriculation, const QString& tempsDeMiseAjour);
+        void on_notification_system_clicked();
 };
 
 #endif // TAXI_H

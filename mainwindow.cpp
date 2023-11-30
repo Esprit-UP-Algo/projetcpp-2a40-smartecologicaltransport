@@ -25,11 +25,26 @@
 #include <QDebug>
 #include <QFile>
 #include <QTextStream>
+#include<Windows.h>
+#include<arduino.h>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
         ui->setupUi(this);
+
+        int ret=A.connect_arduino();
+        switch(ret)
+        {
+        case (0):qDebug()<<"arduino is avilble and connected to :"<<A.getArduino_port_name();
+            break;
+        case (1):qDebug()<<"arduino is avilble but not connected to :"<<A.getArduino_port_name();
+            break;
+        case (-1):qDebug()<<"arduino is not avilble ";
+        }
+        QObject::connect(A.get_serial(),SIGNAL(readyRead()),this,SLOT(update_ard()));
+
+        //
         ui->groupBox_14->hide();
         ui->groupBox_10->hide();
         ui->groupBox_11->hide();
@@ -94,6 +109,8 @@ MainWindow::MainWindow(QWidget *parent)
     //ui->label_56->hide();
     //ui->label_57->hide();
     ui->groupBox_8->hide();
+    //arduino
+
 
 }
 
@@ -604,4 +621,47 @@ void MainWindow::on_pushButton_21_clicked()
 void MainWindow::on_pushButton_38_clicked()
 {
     ui->groupBox_14->hide();
+}
+
+void MainWindow::on_NOTIF_clicked()
+{
+    // Show a message box as a notification
+    QMessageBox::information(this, "Notification", "Button pressed!");
+
+    // Send a Windows notification
+    NOTIFYICONDATA nid;
+    ZeroMemory(&nid, sizeof(NOTIFYICONDATA));
+
+    nid.cbSize = sizeof(NOTIFYICONDATA);
+    nid.hWnd = reinterpret_cast<HWND>(this->winId());
+    nid.uID = 1;  // Unique ID for the notification icon
+    nid.uFlags = NIF_INFO;
+    nid.dwInfoFlags = NIIF_INFO;
+    nid.uTimeout = 3000;  // Display time in milliseconds
+
+    wcscpy_s(nid.szInfoTitle, L"Notification");
+    wcscpy_s(nid.szInfo, L"Button pressed!");
+
+    Shell_NotifyIcon(NIM_ADD, &nid);
+    Shell_NotifyIcon(NIM_DELETE, &nid);
+}
+void MainWindow :: update_ard()
+{
+    QSqlQuery query;
+
+        data=A.read_from_arduino();
+        qDebug()<<"data="<<data;
+        if(data=="0")
+        {
+            query.prepare("UPDATE  taxis  SET   Statut='libre'   WHERE immatricule ='129TUN95'");
+            query.exec();
+
+        }
+        else
+        {
+            query.prepare("UPDATE  taxis  SET   Statut='occupe'   WHERE immatricule ='129TUN95'");
+            query.exec();
+
+        }
+
 }

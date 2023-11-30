@@ -65,9 +65,9 @@ QSqlQueryModel *taxi::afficher()
 }
 QSqlQueryModel *taxi::pluscinquante()
 {
-    QSqlQueryModel *model= new QSqlQueryModel();
-    model->setQuery("select * from taxis WHERE  EtatCH>70 AND statut = 'libre' ");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Immatricule"));
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM taxis WHERE statut = 'libre' ORDER BY EtatCH DESC");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Immatricule"));
     return model;
 }
 QSqlQueryModel *taxi::Recherher(QString immatricule )

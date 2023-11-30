@@ -19,6 +19,8 @@
 #include <QIntValidator>
 #include <QFile>
 #include <QTextStream>
+#include<Windows.h>
+#include"arduino.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -32,9 +34,9 @@ public:
     ~MainWindow();
 
 private slots:
+    void update_ard();
     void on_pushButton_3_clicked();
 
-    void on_pushButton_14_clicked();
 
     void on_pushButton_15_clicked();
 
@@ -42,7 +44,7 @@ private slots:
 
     void on_pushButton_19_clicked();
 
-    void on_pushButton_20_clicked();
+
 
     void on_pushButton_23_clicked();
 
@@ -58,11 +60,9 @@ private slots:
 
     void on_pushButton_21_clicked();
 
-    void on_pushButton_24_clicked();
 
     void on_pushButton_17_clicked();
 
-    void on_pushButton_26_clicked();
 
     void on_pushButton_29_clicked();
 
@@ -86,7 +86,6 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void on_buttonBox_accepted();
 
     void on_pushButton_4_clicked();
 
@@ -94,19 +93,22 @@ private slots:
 
     void on_pushButton_11_clicked();
 
-    void on_DDD_clicked();
 
     void on_pushButton_9_clicked();
 
     void on_pushButton_6_clicked();
 
-    void on_pushButton_70_clicked();
+    void notif();
 
     void on_pushButton_38_clicked();
+
+    void on_NOTIF_clicked();
 
 private:
     Ui::MainWindow *ui;
     taxi T1,T2;
         QPropertyAnimation *ESS;
+        QByteArray data;
+    Arduino A;
 };
 #endif // MAINWINDOW_H
