@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>tab11.png</file>
+        <file>creer.png</file>
+        <file>cruudbar.png</file>
+        <file>export.png</file>
+        <file>modif.png</file>
+        <file>recherche1.png</file>
+        <file>sup.png</file>
+    </qresource>
+</RCC>

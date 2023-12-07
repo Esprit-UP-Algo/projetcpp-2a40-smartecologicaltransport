@@ -1,0 +1,56 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/back1.png</file>
+        <file>img/back2.png</file>
+        <file>img/box1.png</file>
+        <file>img/box2.png</file>
+        <file>img/box3.png</file>
+        <file>img/calender.png</file>
+        <file>img/cond service.png</file>
+        <file>img/editer.png</file>
+        <file>img/exit.png</file>
+        <file>img/filter.png</file>
+        <file>img/graphs.png</file>
+        <file>img/hi bro.png</file>
+        <file>img/home.png</file>
+        <file>img/lcondac.png</file>
+        <file>img/lcondinactif.png</file>
+        <file>img/log out.png</file>
+        <file>img/logo.png</file>
+        <file>img/managment.png</file>
+        <file>img/map.png</file>
+        <file>img/nbrcond.png</file>
+        <file>img/paiment.png</file>
+        <file>img/rechreche.png</file>
+        <file>img/resourses.qrc</file>
+        <file>img/retour.png</file>
+        <file>img/stats.png</file>
+        <file>img/status don.png</file>
+        <file>img/statut.png</file>
+        <file>img/support.png</file>
+        <file>img/tab1.png</file>
+        <file>img/tab10.png</file>
+        <file>img/tab2.png</file>
+        <file>img/tab3.png</file>
+        <file>img/tab5.png</file>
+        <file>img/tab6.png</file>
+        <file>img/tab7.png</file>
+        <file>img/tab8.png</file>
+        <file>img/tab9.png</file>
+        <file>img/taxisti.png</file>
+        <file>img/telli.png</file>
+        <file>img/voir.png</file>
+        <file>img/creer.png</file>
+        <file>img/cruudbar.png</file>
+        <file>img/export.png</file>
+        <file>img/recherche1.png</file>
+        <file>img/sup.png</file>
+        <file>img/tab11.png</file>
+        <file>img/table crud.png</file>
+        <file>img/modif.png</file>
+        <file>img/refrechini.png</file>
+        <file>img/tab5.1.png</file>
+        <file>img/ex.png</file>
+        <file>img/ajouter.png</file>
+    </qresource>
+</RCC>
