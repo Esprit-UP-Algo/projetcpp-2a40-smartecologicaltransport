@@ -104,6 +104,10 @@ private slots:
 
     void on_NOTIF_clicked();
 
+    void on_tableView_3_activated(const QModelIndex &index);
+
+    void on_lineEdit_5_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::MainWindow *ui;
     taxi T1,T2;

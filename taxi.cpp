@@ -18,6 +18,9 @@
 #include <QPdfWriter>
 #include <QFile>
 #include <QTextStream>
+#include <QPrinter>
+#include <QPainter>
+#include <QColor>
 taxi :: taxi(QString immatricule ,QString marque ,QString modele ,QString carburant ,int NBRPL ,QString BoiteV ,QString Statut ,QString NumCH,QString TypeCO,int EtatCH ,QString Auton)
 {
     this->immatricule=immatricule;
@@ -290,50 +293,126 @@ QSqlQueryModel *taxi::afficherHISTO()
 }
 void taxi :: generatePdf(const QString &fileName)
 {
-    QSqlQuery query, query2;
+
+        QPdfWriter pdfWriter(fileName);
+        QPainter painter(&pdfWriter);
+
+
+        QColor color_green(0, 128, 0);
+        QColor color_red(200, 0, 0);
+        QColor color_blue(0, 0, 128);
+        QColor color_purple(128, 0, 128);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.setRenderHint(QPainter::TextAntialiasing, true);
+        // Set up the painter
+        QFont font2;
+        int font2Size = 8;  // Ajustez la taille de la police au besoin
+        font2.setPointSize(font2Size);
+        font2.setBold(true);
+        painter.setFont(font2);
+        painter.setPen(Qt::black);
+        painter.drawText(0, 900, "Rapport Instantané sur l'Activité des Taxis :");
+        QFont font1;
+        int font1Size = 20;  // Ajustez la taille de la police au besoin
+        font1.setPointSize(font1Size);
+        font1.setBold(true);
+        painter.setFont(font1);
+        painter.setPen(Qt::black);
+        painter.drawText(3000,500, "Entreprise : GreenGO");
+        // Start a new page
+        QFont font;
+        int fontSize = 5;  // Ajustez la taille de la police au besoin
+        font.setPointSize(fontSize);
+        font.setBold(true);
+        painter.setFont(font);
+        painter.setPen(Qt::black);
+        //tazyin
+        painter.drawText(0,13500 , "Signature : Sassi Slim");
+        painter.drawText(0, 13700, "Date de Création : " + QDate::currentDate().toString("dd/MM/yyyy"));
+        painter.setPen(Qt::black);
+        painter.setPen(Qt::black); // Définir la couleur du stylo en noir
+        painter.drawLine(0, 1100, pdfWriter.width(),1100);
+        // Ajouter une section d'en-têt
+
+        // ... (autres éléments d'en-tête)
+
+        // Afficher les informations sur les taxis dans le PDF
+        QSqlQuery query, query2;
         query.prepare("SELECT COUNT(*) FROM TAXIS WHERE statut = 'occupe'");
         query.exec();
-                query.next();
-            int count = query.value(0).toInt();
-            //Les taxis libres
-                query2.prepare("SELECT COUNT(*) FROM TAXIS WHERE statut = 'libre'");
-                query2.exec();
-                        query2.next();
-                    int count1 = query2.value(0).toInt();
-            QString myText = QString::number(count);
-            QString myText1 = QString::number(count1);
-    QPdfWriter pdfWriter(fileName);
-    QPainter painter(&pdfWriter);
+        query.next();
+        int count = query.value(0).toInt();
 
-    // Set up the painter
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setRenderHint(QPainter::TextAntialiasing, true);
-    //New Page
-    painter.begin(&pdfWriter);
-    // Start a new page
-    QFont font;
-    int fontSize = 25;  // Adjust the font size as needed
-    font.setPointSize(fontSize);
-    font.setBold(true);
-    painter.setFont(font);
-    painter.setPen(Qt::black);
-    painter.begin(&pdfWriter);
+        query2.prepare("SELECT COUNT(*) FROM TAXIS WHERE statut = 'libre'");
+        query2.exec();
+        query2.next();
+        int count1 = query2.value(0).toInt();
 
-    // Ajouter une section d'en-tête
-    painter.drawText(500, 900, "Rapport Instantané sur l'Activité des Taxis");
 
-    painter.drawText(0,3800 , "Signature : Sassi Slim");
-    painter.drawText(0, 4200, "Date de Création : " + QDate::currentDate().toString("dd/MM/yyyy"));
-    painter.setPen(Qt::black);
-    painter.drawText(2300, 2300, "Entreprise : GreenGO");
-    painter.setPen(Qt::black); // Définir la couleur du stylo en noir
-    painter.drawLine(0, 1100, pdfWriter.width(),1100);
+        QString myText = QString::number(count);
+        QString myText1 = QString::number(count1);
 
-    // Afficher les informations sur les taxis dans le PDF
-    painter.setPen(Qt::red);
-    painter.drawText(0, 2800, "Nombre de taxis occupés : " + myText);
-    painter.drawText(0, 3200, "Nombre de taxis libres : " + myText1);
-    painter.end();
+
+        QSqlQuery query3;
+            query3.prepare("SELECT * FROM TAXIS WHERE statut = 'libre'");
+            query3.exec();
+
+            int yPos = 2000;  // Ajustez la position verticale au besoin
+
+            painter.setPen(color_green); // Utiliser la couleur définie
+            while (query3.next()) {
+                QString taxiInfo = QString("Immatricule: %1,Marque:%2,Place:%3,Charge:%4,Connecteur:%5,Autonmie:%6")
+                                        .arg(query3.value("immatricule").toString())
+                                        .arg(query3.value("marque").toString())
+                                        .arg(query3.value("NBRPL").toString())
+                                        .arg(query3.value("ETATCH").toString())
+                                        .arg(query3.value("TYPECO").toString())
+                                        .arg(query3.value("AUTON").toString());
+
+                painter.setPen(color_green); // Utiliser la couleur définie
+                painter.drawText(0, yPos, taxiInfo);
+
+                yPos += 200;  // Ajustez l'espacement vertical entre les taxis au besoin
+            }
+
+            painter.setPen(Qt::red);
+            QSqlQuery query4;
+                query4.prepare("SELECT * FROM TAXIS WHERE statut = 'occupe'");
+                query4.exec();
+
+                int YPos = 3000;  // Ajustez la position verticale au besoin
+
+                while (query4.next()) {
+                    QString taxiInfo1 = QString("Immatricule: %1, Marque:%2, Place:%3, Charge:%4, Connecteur:%5, Autonmie:%6")
+                        .arg(query4.value("immatricule").toString())
+                        .arg(query4.value("marque").toString())
+                        .arg(query4.value("NBRPL").toString())
+                        .arg(query4.value("ETATCH").toString())
+                        .arg(query4.value("TYPECO").toString())
+                        .arg(query4.value("AUTON").toString());
+
+                    painter.setPen(color_red); // Utiliser la couleur définie
+                    painter.drawText(0, YPos, taxiInfo1);
+
+                    YPos += 200;  // Ajustez l'espacement vertical entre les taxis au besoin
+                }
+
+                //image
+                QImage image("C:/Users/asus/OneDrive/Bureau/KK.png");  // Remplacez par le chemin de votre image
+                if (!image.isNull()) {
+                    // Ajustez les coordonnées et les dimensions selon vos besoins
+                    painter.drawImage(QRectF(9000, 700, image.width(), image.height()), image);
+                }
+                QFont font3;
+                int font3Size = 8;  // Ajustez la taille de la police au besoin
+                font3.setPointSize(font3Size);
+                font3.setBold(true);
+                painter.setFont(font3);
+                painter.setPen(Qt::black);
+                painter.drawText(0, 1800, "Nombre de taxis libres : " + myText1);
+                painter.drawText(0, 2800, "Nombre de taxis occupés : " + myText);
+        painter.end();  // Terminez le dessin
+
 }
 void taxi ::ecrireDansFichier(const QString& immatriculation, const QString& tempsSuppression)
 {

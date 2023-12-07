@@ -50,8 +50,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->groupBox_11->hide();
          ui->groupBox_12->hide();
          ui->groupBox_13->hide();
-        ui->groupBox_9->hide();
-        ui->tableView_5->setModel(T1.afficherHISTO());
         ui->tableView_4->setModel(T1.afficher());
         ui->tableView_3->setModel(T1.pluscinquante());
         int A=T1.GTNOT();
@@ -75,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent)
     chart->addSeries(series);
     chart->setTitle("TAXI");
     chart->setAnimationOptions(QChart:: SeriesAnimations);
-    chart->resize(450,300);
+    chart->resize(950,280);
 
     QStringList categories;
     categories << " Aujourd'hui" ;
@@ -97,7 +95,6 @@ MainWindow::MainWindow(QWidget *parent)
     }
     ui->label_8->setGraphicsEffect(sh[0]);
     ui->label_9->setGraphicsEffect(sh[1]);
-    ui->label_10->setGraphicsEffect(sh[2]);
     ui->label_12->setGraphicsEffect(sh[4]);
     ui->label_LISTE->setGraphicsEffect(sh[5]);
     ui->groupBox_2->hide();
@@ -199,7 +196,6 @@ void MainWindow::on_pushButton_22_clicked()
                  ui->lineEdit_10->setText("");
                  ui->spinBox_2=0;
                 // Refresh
-                 ui->tableView_5->setModel(T1.afficherHISTO());
                 ui->tableView_4->setModel(T1.afficher());
                 ui->tableView_3->setModel(T1.pluscinquante());
                 ui->groupBox_3->hide();
@@ -226,7 +222,7 @@ void MainWindow::on_pushButton_22_clicked()
                 }
                 else
                 {
-                    ui->groupBox_9->hide();
+                    //ui->groupBox_9->hide();
                 }
             }
             }
@@ -310,7 +306,6 @@ void MainWindow::on_pushButton_27_clicked()
                         ui->lineEdit_15->setText("");
                         ui->spinBox_6=0;
                         // Refresh
-                        ui->tableView_5->setModel(T1.afficherHISTO());
                         ui->tableView_4->setModel(T1.afficher());
                         ui->tableView_3->setModel(T1.pluscinquante());
                         ui->groupBox_5->hide();
@@ -337,7 +332,7 @@ void MainWindow::on_pushButton_27_clicked()
                         }
                         else
                         {
-                            ui->groupBox_9->hide();
+                            //ui->groupBox_9->hide();
                         }
                     }
                     else
@@ -375,7 +370,6 @@ void MainWindow::on_pushButton_31_clicked()
                QString tempsSuppression = tempsActuel.toString("dd/MM/yyyy hh:mm:ss"); // Formatage du temps
                T1.ecrireDansFichier(immatricule, tempsSuppression);
             // Refresh
-            ui->tableView_5->setModel(T1.afficherHISTO());
             ui->lineEdit_11->setText("");
             ui->tableView_4->setModel(T1.afficher());
             ui->tableView_3->setModel(T1.pluscinquante());
@@ -406,7 +400,7 @@ void MainWindow::on_pushButton_31_clicked()
             }
             else
             {
-                ui->groupBox_9->hide();
+                //ui->groupBox_9->hide();
             }
         }
     }
@@ -526,7 +520,7 @@ void MainWindow::on_pushButton_37_clicked()
             }
             else
             {
-                ui->groupBox_9->hide();
+                //ui->groupBox_9->hide();
             }
         }
     }
@@ -542,8 +536,8 @@ void MainWindow::on_pushButton_36_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->groupBox_9->show();
-    ESS = new QPropertyAnimation(ui->groupBox_9,"geometry");
+    //ui->groupBox_9->show();
+    //ESS = new QPropertyAnimation(ui->groupBox_9,"geometry");
     ESS->setDuration(3000);
     ESS->setStartValue(QRect(1440,1090,471,400));
     ESS->setEndValue(QRect(1440,560,471,400));
@@ -551,7 +545,7 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::on_pushButton_4_clicked()
 {
-    ui->groupBox_9->hide();
+    //ui->groupBox_9->hide();
 }
 
 
@@ -579,37 +573,7 @@ void MainWindow::on_pushButton_11_clicked()
     ui->groupBox_13->hide();
 }
 
-void MainWindow::on_pushButton_6_clicked()
-{
-    QString imm=ui->lineEdit_2->text();
-    int A=T1.Recherher3(imm);
-    if (A==0)
-    {
-    QAbstractItemModel* model = ui->tableView_5->model();
-    ui->lineEdit_2->setText("");
-    if (model) {
-        int rowCount = model->rowCount();
-        if (rowCount == 0 ) {
-          // ui->groupBox_7->show();
-           ui->lineEdit_2->setText("");
-        }
-        else
-        {
-            //ui->groupBox_7->hide();
-            ui->tableView_5->setModel(T1.Recherher0(imm));
-            ui->lineEdit_2->setText("");
-        }
-    }
-    }
-    else
-        ui->groupBox_7->show();
 
-}
-
-void MainWindow::on_pushButton_7_clicked()
-{
-    ui->tableView_5->setModel(T1.afficherHISTO());
-}
 
 void MainWindow::on_pushButton_21_clicked()
 {
@@ -653,15 +617,22 @@ void MainWindow :: update_ard()
         qDebug()<<"data="<<data;
         if(data=="0")
         {
+            QMessageBox::warning(nullptr, QObject::tr("notification"), QObject::tr("Taxi :129TUN95 est Libre"), QMessageBox::Ok);
             query.prepare("UPDATE  taxis  SET   Statut='libre'   WHERE immatricule ='129TUN95'");
             query.exec();
 
         }
         else
         {
+            QMessageBox::warning(nullptr, QObject::tr("notification"), QObject::tr("Taxi :129TUN95 est occupé"), QMessageBox::Ok);
             query.prepare("UPDATE  taxis  SET   Statut='occupe'   WHERE immatricule ='129TUN95'");
             query.exec();
 
         }
+
+}
+
+void MainWindow::on_tableView_3_activated(const QModelIndex &index)
+{
 
 }
